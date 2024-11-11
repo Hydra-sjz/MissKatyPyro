@@ -77,8 +77,6 @@ async def st_cb_handler(bot, query):
         reply_markup=InlineKeyboardMarkup(BUTTONS_ST),
         disable_web_page_preview=True,
     )
-
-
 # =======================f=======MAIN_HELP_CMD====================
 TEXT_GE = """
 Hey {} 👋
@@ -111,6 +109,12 @@ async def hp_hagndlery(bot, message):
         reply_markup=InlineKeyboardMarkup(BUTTONS_GE),
         quote=True,
     )
+
+@Bot.on_callback_query(filters.regex('^close$'))
+async def close_cb(client: Bot, callback: CallbackQuery):
+    await callback.answer()
+    await callback.message.delete()
+    await callback.message.reply_to_message.delete()
 #================GROUP_CMD=================
 TEXT_GP = """
 Hey 👋{}, Cʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴs ʙᴇʟᴏᴡ ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ. Iғ ʏᴏᴜ'ʀᴇ ғᴀᴄɪɴɢ ᴀɴʏ ᴘʀᴏʙʟᴇᴍ  ʏᴏᴜ ᴄᴀɴ ᴀsᴋ ɪɴ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ.
